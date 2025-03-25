@@ -1,21 +1,23 @@
 function router() {
-  const view = location.hash.slice(1) || 'listing';
-  // ...existing code...
-  switch (view) {
-    case 'listing':
-      // afficher la vue listing (ex: provider.getPersonnages() et rendu)
-      break;
-    case 'detail':
-      // afficher la vue détail (pour un personnage donné)
-      break;
-    case 'favoris':
-      // afficher la vue des favoris
-      break;
-    default:
-      // afficher "page non trouvée" ou rediriger
-      break;
+  const hash = location.hash.slice(1); // Supprime le #
+  if (hash.startsWith('detail')) {
+    // Extraction du paramètre id (ex: detail?id=26000000)
+    const params = new URLSearchParams(hash.split('?')[1]);
+    const id = params.get('id');
+    if (id) {
+      renderDetail(id);
+    } else {
+      document.getElementById('app').innerHTML = '<p>Identifiant manquant pour la vue détail</p>';
+    }
+  } else if (hash === 'favoris') {
+    renderFavoris();
+  } else if (hash === 'search') {
+    renderSearch();
+  } else if (hash === 'listing' || hash === '') {
+    renderListing();
+  } else {
+    document.getElementById('app').innerHTML = '<p>Page non trouvée</p>';
   }
-  // ...existing code...
 }
 window.addEventListener('hashchange', router);
 window.addEventListener('load', router);
