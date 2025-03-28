@@ -1,3 +1,3 @@
-const API_ENDPOINT = "http://localhost:3000/data/responses";
+const API_ENDPOINT = "http://localhost:3000";
 
 // ...existing code...

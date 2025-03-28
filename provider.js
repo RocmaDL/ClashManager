@@ -2,9 +2,9 @@ class Provider {
   constructor(apiEndpoint) {
     this.apiEndpoint = apiEndpoint;
   }
-  async fetchData() {
+  async fetchData(dataType) {
     try {
-      const response = await fetch(this.apiEndpoint);
+      const response = await fetch(this.apiEndpoint+"/"+dataType);
       const data = await response.json();
       return data;
     } catch (error) {
@@ -13,12 +13,12 @@ class Provider {
     }
   }
   async getPersonnages() {
-    const data = await this.fetchData();
-    return data && data.items ? data.items : [];
+    const data = await this.fetchData("items");
+    return data;
   }
   async getSupportItems() {
-    const data = await this.fetchData();
-    return data && data.supportItems ? data.supportItems : [];
+    const data = await this.fetchData("supportItems");
+    return data;
   }
 }
 const provider = new Provider(API_ENDPOINT);

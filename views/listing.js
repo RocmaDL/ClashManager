@@ -40,6 +40,7 @@ async function renderListing(page = 1) {
   } else {
     lazyImages.forEach(img => { img.src = img.dataset.src; });
   }
+  console.log(html);
 }
 
 function ajouterFavoris(id) {
@@ -55,4 +56,5 @@ function ajouterFavoris(id) {
 
 window.renderListing = renderListing;
 window.ajouterFavoris = ajouterFavoris;
+
 // ...existing code...
