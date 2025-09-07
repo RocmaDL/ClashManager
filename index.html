@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Clash Manager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="dark bg-gray-900 text-gray-200">
+  <!-- Navbar -->
+  <nav class="bg-gray-800 text-gray-100 p-4 flex items-center justify-between shadow-lg">
+    <div class="flex items-center space-x-4">
+      <a href="#listing" class="nav-link font-bold text-xl hover:underline" data-nav="listing">Personnages</a>
+      <a href="#supportItems" class="nav-link font-bold text-xl hover:underline" data-nav="supportItems">Troupes de
+        tours</a>
+      <a href="#favoris" class="nav-link font-bold text-xl hover:underline" data-nav="favoris">Favoris</a>
+    </div>
+    <div class="relative">
+      <!-- La searchbar appelle renderListing() pour écraser la vue Listing -->
+      <input id="navbarSearchInput" type="text" placeholder="Rechercher..."
+        class="p-2 rounded border border-gray-500 text-gray-900" onkeyup="renderListing();">
+    </div>
+  </nav>
+
+  <div id="app" class="min-h-screen"></div>
+  <script src="config.js"></script>
+  <script src="provider.js"></script>
+  <!-- Ajout du script card.js -->
+  <script src="views/card.js"></script>
+  <!-- Vues -->
+  <script src="views/listing.js"></script>
+  <script src="views/detail.js"></script>
+  <script src="views/detailSupport.js"></script>
+  <script src="views/favoris.js"></script>
+  <script src="views/search.js"></script>
+  <script src="views/supportItems.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
